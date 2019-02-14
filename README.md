@@ -56,15 +56,13 @@ request to Google for every single file in your G-Drive, to check
 the revisions on it, and another for to clear each _Keep Forever_ 
 flags it finds. Plan to let it run over night - maybe longer.
 
+By the time I had written this script, my usage had grown to 126 GB.
+After running it, usage dropped to 71 GB. (Active file space was
+around 60 GB, but some had been modified within 30 days and thus
+had revisions not yet purged.)
+
 Until Google fixes this behavior, you will need to re-run on occation
 to find new revisions and clear the flag on them.
-
----
-
-Using Node.js is an unreasonable requirement for most people. I wrote
-this script to solve my own account, and share it _as open source_ for
-anyone else to use. If you can make it more user friendly, please do.
-Let me know about it and I'll link to your project.
 
 LEGAL DISCLAIMER: This script works for me, but I make no guarantees
 what so ever that it will work for you. Some of your data will be
@@ -72,3 +70,10 @@ deleted. That is the purpose of this script. It should only be the
 non-current historical revisions of files that were replaced over
 30 days ago.
 The source code is here, and you run it yourself. Use at your own risk. 
+
+---
+
+Using Node.js is an unreasonable requirement for most people. I wrote
+this script to solve my own account, and share it _as open source_ for
+anyone else to use. If you can make it more user friendly, please do.
+Let me know about it and I'll link to your project.

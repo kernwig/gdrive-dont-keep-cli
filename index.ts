@@ -111,7 +111,7 @@ async function getRevisions(drive, file): Promise<void> {
         for (const rev of res.data.revisions) {
             // console.log(`\trev ${rev.modifiedTime} keepForever=${rev.keepForever}`);
             if (rev.keepForever) {
-                //await cleanRevision(drive, file, rev);
+                await cleanRevision(drive, file, rev);
             }
         }
     }
