@@ -37,7 +37,7 @@ Over going around in circles with Google support, I found the
 [Google Drive API](https://developers.google.com/drive/api/v3/about-sdk)
 and wrote this script.
 
-No run, clone this repository, cd into it, and run:
+To run, clone this repository, cd into it, and run:
 (Node.js v8 or later is required).
 
 ```
