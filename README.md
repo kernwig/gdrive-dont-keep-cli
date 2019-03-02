@@ -1,9 +1,11 @@
 # G-Drive Don't Keep!
 
+## What's the Problem?
+
 Google drive has a hidden bug. I see in on every account, but Google
 support calls it a feature, while contradicting the official documentation.
 
-What is this problem? **It never deletes anything!**
+What is the problem? **It never deletes anything!**
 
 When you edit or overwrite a (not G-Suite) file, it is supposed to keep
 the old revision of this file for 30 days before purging it. This lets
@@ -16,7 +18,7 @@ is automatically set_! So while the documentation tells you that old
 revisions will be deleted after 30 days, freeing up your disk quota,
 they actually are _never deleted_!
 
-Now, this does not happen with all files or all ways files are updated.
+This does not happen with all files or all ways files are updated.
 I haven't figured out the pattern. I can tell you two examples:
 
 1. Upload a text file via https://drive.google.com. 
@@ -33,18 +35,23 @@ one with the _Keep Forever_ checkmark hidden within.
 I discovered this when Google Backup and Sync told me that my data
 was using 59 GB, but drive.google.com said I was using 108 GB.
 
-Over going around in circles with Google support, I found the 
+After going around in circles with Google support, I found the 
 [Google Drive API](https://developers.google.com/drive/api/v3/about-sdk)
 and wrote this script.
 
-To run, clone this repository, cd into it, and run:
-(Node.js v8 or later is required).
+## Usage
 
-```
- npm install
- npm start
-```
-
+To use:
+1. Clone this repository to your computer.
+1. Visit https://developers.google.com/drive/api/v3/quickstart/nodejs
+   - Click the blue *ENABLE THE DRIVE API* button
+   - In the popup, click on *DOWNLOAD CLIENT CONFIGURATION* and save 
+     the file into the directory with this code.
+1. Go into the new directory on the command-line with 
+   [Node.js](https://nodejs.org/) v8 or later available.
+1. On the command line, enter:
+   - `npm install`
+   - `npm start`   
 
 Follow the directions to authorize the application to access your
 Google account - this will be saved to the `token.json` file and
@@ -56,6 +63,14 @@ request to Google for every single file in your G-Drive, to check
 the revisions on it, and another for to clear each _Keep Forever_ 
 flags it finds. Plan to let it run over night - maybe longer.
 
+## Troubleshooting
+
+Each day that you run this script, you will need to forec re-authentication
+by deleting the `token.json` file. If you receive an *unauthorized_client* error,
+that means you need to delete `token.json`. Just delete it and run again.
+
+## Epilogue
+
 By the time I had written this script, my usage had grown to 126 GB.
 After running it, usage dropped to 71 GB. (Active file space was
 around 60 GB, but some had been modified within 30 days and thus
@@ -64,16 +79,22 @@ had revisions not yet purged.)
 Until Google fixes this behavior, you will need to re-run on occation
 to find new revisions and clear the flag on them.
 
-LEGAL DISCLAIMER: This script works for me, but I make no guarantees
+## LEGAL DISCLAIMER
+
+This script works for me, but I make no guarantees
 what so ever that it will work for you. Some of your data will be
 deleted. That is the purpose of this script. It should only be the
 non-current historical revisions of files that were replaced over
 30 days ago.
 The source code is here, and you run it yourself. Use at your own risk. 
 
----
+# Help Improve It
 
 Using Node.js is an unreasonable requirement for most people. I wrote
 this script to solve my own account, and share it _as open source_ for
 anyone else to use. If you can make it more user friendly, please do.
 Let me know about it and I'll link to your project.
+
+# License
+
+[CC0](https://wiki.creativecommons.org/wiki/CC0) - No copyright reserved
